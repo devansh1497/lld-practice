@@ -37,7 +37,7 @@ public class Main {
         Thread.sleep(2);
         problemService.openProblem("user2", "2");
         LeaderboardService leaderboardService = new LeaderboardService(inMemoryDatastore);
-        SubmissionService submissionService = new SubmissionService(inMemoryDatastore, leaderboardService);
+        SubmissionService submissionService = new SubmissionService(inMemoryDatastore, leaderboardService, problemService, userService);
         submissionService.submit(u1, p1);
         submissionService.submit(u2, p2);
 

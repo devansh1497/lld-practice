@@ -27,4 +27,10 @@ public class UserService {
                 dataStore.getUsers().stream().filter(u -> u.getUserName().equals(userId)).collect(Collectors.toList()).get(0);
         return dataStore.getProblems().stream().filter(p -> user.getProblemsSolved().contains(p.getId())).collect(Collectors.toList());
     }
+
+    public void updateUserStats(User user, Problem problem) {
+        user.solve(problem.getId());
+        double score = problem.getScoringStrategy().score(problem, null);
+        user.setScore(user.getScore()+score);
+    }
 }
